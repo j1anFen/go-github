@@ -9,22 +9,21 @@ import (
 	"context"
 	"errors"
 	"fmt"
-	"time"
 )
 
 var ErrMixedCommentStyles = errors.New("cannot use both position and side/line form comments")
 
 // PullRequestReview represents a review of a pull request.
 type PullRequestReview struct {
-	ID             *int64     `json:"id,omitempty"`
-	NodeID         *string    `json:"node_id,omitempty"`
-	User           *User      `json:"user,omitempty"`
-	Body           *string    `json:"body,omitempty"`
-	SubmittedAt    *time.Time `json:"submitted_at,omitempty"`
-	CommitID       *string    `json:"commit_id,omitempty"`
-	HTMLURL        *string    `json:"html_url,omitempty"`
-	PullRequestURL *string    `json:"pull_request_url,omitempty"`
-	State          *string    `json:"state,omitempty"`
+	ID             *int64  `json:"id,omitempty"`
+	NodeID         *string `json:"node_id,omitempty"`
+	User           *User   `json:"user,omitempty"`
+	Body           *string `json:"body,omitempty"`
+	SubmittedAt    *string `json:"submitted_at,omitempty"`
+	CommitID       *string `json:"commit_id,omitempty"`
+	HTMLURL        *string `json:"html_url,omitempty"`
+	PullRequestURL *string `json:"pull_request_url,omitempty"`
+	State          *string `json:"state,omitempty"`
 	// AuthorAssociation is the comment author's relationship to the issue's repository.
 	// Possible values are "COLLABORATOR", "CONTRIBUTOR", "FIRST_TIMER", "FIRST_TIME_CONTRIBUTOR", "MEMBER", "OWNER", or "NONE".
 	AuthorAssociation *string `json:"author_association,omitempty"`

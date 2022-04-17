@@ -8,7 +8,6 @@ package github
 import (
 	"context"
 	"fmt"
-	"time"
 )
 
 // WebHookPayload represents the data that is received from GitHub when a push
@@ -37,8 +36,8 @@ type WebHookAuthor = CommitAuthor
 
 // Hook represents a GitHub (web and service) hook for a repository.
 type Hook struct {
-	CreatedAt    *time.Time             `json:"created_at,omitempty"`
-	UpdatedAt    *time.Time             `json:"updated_at,omitempty"`
+	CreatedAt    *string                `json:"created_at,omitempty"`
+	UpdatedAt    *string                `json:"updated_at,omitempty"`
 	URL          *string                `json:"url,omitempty"`
 	ID           *int64                 `json:"id,omitempty"`
 	Type         *string                `json:"type,omitempty"`

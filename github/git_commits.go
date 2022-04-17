@@ -10,10 +10,8 @@ import (
 	"context"
 	"errors"
 	"fmt"
-	"strings"
-	"time"
-
 	"golang.org/x/crypto/openpgp"
+	"strings"
 )
 
 // SignatureVerification represents GPG signature verification.
@@ -56,9 +54,9 @@ func (c Commit) String() string {
 // CommitAuthor represents the author or committer of a commit. The commit
 // author may not correspond to a GitHub User.
 type CommitAuthor struct {
-	Date  *time.Time `json:"date,omitempty"`
-	Name  *string    `json:"name,omitempty"`
-	Email *string    `json:"email,omitempty"`
+	Date  *string `json:"date,omitempty"`
+	Name  *string `json:"name,omitempty"`
+	Email *string `json:"email,omitempty"`
 
 	// The following fields are only populated by Webhook events.
 	Login *string `json:"username,omitempty"` // Renamed for go-github consistency.
@@ -185,7 +183,7 @@ func createSignatureMessage(commit *createCommit) (string, error) {
 		message = append(message, fmt.Sprintf("parent %s", parent))
 	}
 
-	message = append(message, fmt.Sprintf("author %s <%s> %d %s", commit.Author.GetName(), commit.Author.GetEmail(), commit.Author.GetDate().Unix(), commit.Author.GetDate().Format("-0700")))
+	message = append(message, fmt.Sprintf("author %s <%s> %d %s", commit.Author.GetName(), commit.Author.GetEmail(), commit.Author.GetDate(), commit.Author.GetDate()))
 
 	committer := commit.Committer
 	if committer == nil {
@@ -193,7 +191,7 @@ func createSignatureMessage(commit *createCommit) (string, error) {
 	}
 
 	// There needs to be a double newline after committer
-	message = append(message, fmt.Sprintf("committer %s <%s> %d %s\n", committer.GetName(), committer.GetEmail(), committer.GetDate().Unix(), committer.GetDate().Format("-0700")))
+	message = append(message, fmt.Sprintf("committer %s <%s> %d %s\n", committer.GetName(), committer.GetEmail(), committer.GetDate(), committer.GetDate()))
 	message = append(message, *commit.Message)
 
 	return strings.Join(message, "\n"), nil

@@ -22,10 +22,10 @@ type Notification struct {
 	// GitHub API docs: https://docs.github.com/en/free-pro-team@latest/rest/reference/activity#notification-reasons
 	Reason *string `json:"reason,omitempty"`
 
-	Unread     *bool      `json:"unread,omitempty"`
-	UpdatedAt  *time.Time `json:"updated_at,omitempty"`
-	LastReadAt *time.Time `json:"last_read_at,omitempty"`
-	URL        *string    `json:"url,omitempty"`
+	Unread     *bool   `json:"unread,omitempty"`
+	UpdatedAt  *string `json:"updated_at,omitempty"`
+	LastReadAt *string `json:"last_read_at,omitempty"`
+	URL        *string `json:"url,omitempty"`
 }
 
 // NotificationSubject identifies the subject of a notification.

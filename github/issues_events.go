@@ -8,7 +8,6 @@ package github
 import (
 	"context"
 	"fmt"
-	"time"
 )
 
 // IssueEvent represents an event that occurred around an Issue or Pull Request.
@@ -71,8 +70,8 @@ type IssueEvent struct {
 	//
 	Event *string `json:"event,omitempty"`
 
-	CreatedAt *time.Time `json:"created_at,omitempty"`
-	Issue     *Issue     `json:"issue,omitempty"`
+	CreatedAt *string `json:"created_at,omitempty"`
+	Issue     *Issue  `json:"issue,omitempty"`
 
 	// Only present on certain events; see above.
 	Assignee          *User            `json:"assignee,omitempty"`

@@ -27,21 +27,21 @@ type IssueImportRequest struct {
 
 // IssueImport represents body of issue to import.
 type IssueImport struct {
-	Title     string     `json:"title"`
-	Body      string     `json:"body"`
-	CreatedAt *time.Time `json:"created_at,omitempty"`
-	ClosedAt  *time.Time `json:"closed_at,omitempty"`
-	UpdatedAt *time.Time `json:"updated_at,omitempty"`
-	Assignee  *string    `json:"assignee,omitempty"`
-	Milestone *int       `json:"milestone,omitempty"`
-	Closed    *bool      `json:"closed,omitempty"`
-	Labels    []string   `json:"labels,omitempty"`
+	Title     string   `json:"title"`
+	Body      string   `json:"body"`
+	CreatedAt *string  `json:"created_at,omitempty"`
+	ClosedAt  *string  `json:"closed_at,omitempty"`
+	UpdatedAt *string  `json:"updated_at,omitempty"`
+	Assignee  *string  `json:"assignee,omitempty"`
+	Milestone *int     `json:"milestone,omitempty"`
+	Closed    *bool    `json:"closed,omitempty"`
+	Labels    []string `json:"labels,omitempty"`
 }
 
 // Comment represents comments of issue to import.
 type Comment struct {
-	CreatedAt *time.Time `json:"created_at,omitempty"`
-	Body      string     `json:"body"`
+	CreatedAt *string `json:"created_at,omitempty"`
+	Body      string  `json:"body"`
 }
 
 // IssueImportResponse represents the response of an issue import create request.
@@ -53,8 +53,8 @@ type IssueImportResponse struct {
 	URL              *string             `json:"url,omitempty"`
 	ImportIssuesURL  *string             `json:"import_issues_url,omitempty"`
 	RepositoryURL    *string             `json:"repository_url,omitempty"`
-	CreatedAt        *time.Time          `json:"created_at,omitempty"`
-	UpdatedAt        *time.Time          `json:"updated_at,omitempty"`
+	CreatedAt        *string             `json:"created_at,omitempty"`
+	UpdatedAt        *string             `json:"updated_at,omitempty"`
 	Message          *string             `json:"message,omitempty"`
 	DocumentationURL *string             `json:"documentation_url,omitempty"`
 	Errors           []*IssueImportError `json:"errors,omitempty"`

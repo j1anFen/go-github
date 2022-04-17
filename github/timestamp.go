@@ -26,6 +26,11 @@ func (t Timestamp) String() string {
 // Time is expected in RFC3339 or Unix format.
 func (t *Timestamp) UnmarshalJSON(data []byte) (err error) {
 	str := string(data)
+	// Ignore null, like in the main JSON package.
+	if str == "null" || str == `""` {
+		return nil
+	}
+
 	i, err := strconv.ParseInt(str, 10, 64)
 	if err == nil {
 		t.Time = time.Unix(i, 0)
